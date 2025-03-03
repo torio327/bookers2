@@ -1,0 +1,18 @@
+<h2>User info</h2>
+<div>
+  <%= form_with model:@user ,url:user_path(@user.id),method: :patch do |f|%>
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <%= f.text_field :name,id:"name",class:"form-control"%>
+  </div>
+  <div class="mb-3">
+    <p>Image</p>
+    <%= f.file_field :profile_image, accept:"image/"%>
+  </div>
+  <div class="mb-3">
+    <label for="introduction" class="form-label">Introduction</label>
+    <%= f.text_area :introduction,id:"introduction",class:"form-control"%>
+  </div>
+    <%= f.submit "Update User",class:"btn btn-secondary mb-3" %>
+  <%end%>
+</div>

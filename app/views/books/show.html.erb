@@ -1,0 +1,29 @@
+<h1>Books#show</h1>
+<div class=" row">
+  <%= render 'users/form',user:@user %>
+   <div class="offset-md-1"></div>
+  <div class="col-md-8 ">
+    <h2>Book details</h2>
+    <table class="table">
+      <tr>
+        <td >
+          <%= image_tag @user.get_profile_image(100,100)%>
+          <p><%= link_to @user.name,user_path(@book_detail.user_id)%></p>
+        </td>
+        <td class="text-primary">
+          <%= @book_detail.title%>
+        </td>
+        <td>
+          <%= @book_detail.body%>
+        </td>
+        <td >
+          <%= link_to "Edit",edit_book_path(@book_detail.id),class:"btn btn-success " %>
+
+        </td>
+        <td>
+          <%= link_to "Destroy", book_path(@book_detail.id) ,method: :delete, class: "btn btn-danger", "data-confirm"=>"本当に消しますか?"%> 
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

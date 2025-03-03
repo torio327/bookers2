@@ -5,12 +5,68 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/efcf364bf8.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
+    <header >
+      <nav class="navbar navbar-expand-lg navbar-light bg-dark text-white">
+        <h4 class="">
+          <%= link_to "Bookers","/",class:"nav-link text-white"%>
+        </h4>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+                        aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon "></span>
+        </button>
+        <div class="navbar-collapse collapse " id="navbarToggler">
+          <ul class="navbar-nav me-auto ">
+            <% if user_signed_in? %>
+             <li class="nav-item d-flex align-items-center">
+              <i class="fa-solid fa-house mr-1"></i>
+              <%= link_to "Home",user_path(current_user.id),class:"nav-link text-white"%>
+            </li>
+
+              <li class="nav-item d-flex align-items-center">
+                <i class="fa-solid fa-users mr-1"></i>
+                <%= link_to "Users","/users",class:"nav-link text-white"%>
+              </li>
+              <li class="nav-item d-flex align-items-center">
+                <i class="fa-solid fa-book-open mr-1"></i>
+                <%= link_to "Books",books_path,class:"nav-link text-white"%>
+              </li>
+              <li class="nav-item d-flex align-items-center">
+                <i class="fa-solid fa-right-from-bracket mr-1"></i>
+                <%= link_to "Log out",destroy_user_session_path,method: :delete,class:"nav-link text-white" %>
+              </li>
+            <% else%>
+            <li class="nav-item d-flex align-items-center">
+              <i class="fa-solid fa-house mr-1"></i>
+              <%= link_to "Hoom","/",class:"nav-link text-white"%>
+            </li>
+              <li class="nav-item d-flex align-items-center">
+                <i class="fa-solid fa-link mr-1"></i>
+                <%= link_to "About", "/about",class:"nav-link text-white" %>
+              </li>
+              <li class="nav-item d-flex align-items-center">
+                <i class="fa-solid fa-user-plus mr-1"></i>
+                <%= link_to "Sign up","/users/sign_up",class:"nav-link text-white"  %></li>
+              <li class=" nav-item d-flex align-items-center">
+                <i class="fa-solid fa-right-to-bracket mr-1"></i>
+                <%= link_to "Log in","/users/sign_in" ,class:"nav-link text-white" %>
+              </li>
+            <%end%>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container">
+        <%= yield %>
+      </div>
+    </main>
+    <footer>
+      <p class="text-center">CopyRight Infratop.inc</p>
+    </footer>
   </body>
 </html>
