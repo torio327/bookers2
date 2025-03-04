@@ -11,7 +11,7 @@
   </head>
   <body>
     <header >
-      <nav class="navbar navbar-expand-lg navbar-light bg-dark text-white">
+      <nav class="navbar navbar-expand-lg navbar-light bg-dark text-white ">
         <h4 class="">
           <%= link_to "Bookers","/",class:"nav-link text-white"%>
         </h4>
@@ -61,11 +61,14 @@
       </nav>
     </header>
     <main>
-      <div class="container">
+      <div>
+      <%= flash[:notice]%>
+      </div>
+      <div class="container mt-4">
         <%= yield %>
       </div>
     </main>
-    <footer>
+    <footer class="mt-5">
       <p class="text-center">CopyRight Infratop.inc</p>
     </footer>
   </body>
