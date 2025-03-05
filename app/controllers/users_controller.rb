@@ -21,31 +21,18 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user=User.find(current_user.id)
-    
-    
+    @user=User.find(params[:id])
+    unless @user.id==current_user.id
+      redirect_to user_path(current_user.id)
+    end    
   end
 
   def show
-    @user=User.find(current_user.id)
+    @user=User.find(params[:id])
     @books=Book.where(:user_id=>@user.id)
     @book=Book.new
   end
-
-  # def create
-  #   @book=Book.new(book_params)
-  #   @book.user_id=current_user.id
-  #   @book.save
-  #   if @book.save
-  #     redirect_to book_path(@book.id)
-  #   else
-  #     flash.now[:notice]="User error"
-  #     render books_path
-  #   end
-
-  # end
-
-
+  
   private
 
   def book_params

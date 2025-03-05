@@ -1,3 +1,18 @@
-<h1>Top page</h1>
-
-<p>hello</p>
+<div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+  <h1>welcome to <i class="fa-solid fa-book"></i>
+    <strong>Bookers</strong>!!
+  </h1>
+  <p>In <i class="fa-solid fa-book"></i>
+    <strong>Bookers</strong>,
+  </p>
+  <p>you can share and exchange your opinions, inpressios, and emotions </p>
+  <p>about various books!</p>
+  <div class="text-center">
+    <div class="mb-4 ">
+      <%= link_to "Log in", user_session_path,class:"btn btn-info col-10" %>
+    </div>
+    <div >
+      <%= link_to "Sign up", new_user_registration_path,class:"btn btn-success col-10"%>
+    </div>
+  </div>
+</div>

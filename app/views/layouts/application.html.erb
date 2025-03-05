@@ -11,7 +11,7 @@
   </head>
   <body>
     <header >
-      <nav class="navbar navbar-expand-lg navbar-light bg-dark text-white ">
+      <nav class="navbar navbar-expand-lg navbar-light bg-dark text-white">
         <h4 class="">
           <%= link_to "Bookers","/",class:"nav-link text-white"%>
         </h4>
@@ -20,7 +20,7 @@
           <span class="navbar-toggler-icon "></span>
         </button>
         <div class="navbar-collapse collapse " id="navbarToggler">
-          <ul class="navbar-nav me-auto ">
+          <ul class="navbar-nav me-auto ml-auto">
             <% if user_signed_in? %>
              <li class="nav-item d-flex align-items-center">
               <i class="fa-solid fa-house mr-1"></i>
@@ -42,11 +42,11 @@
             <% else%>
             <li class="nav-item d-flex align-items-center">
               <i class="fa-solid fa-house mr-1"></i>
-              <%= link_to "Hoom","/",class:"nav-link text-white"%>
+              <%= link_to "Home","/",class:"nav-link text-white"%>
             </li>
               <li class="nav-item d-flex align-items-center">
                 <i class="fa-solid fa-link mr-1"></i>
-                <%= link_to "About", "/about",class:"nav-link text-white" %>
+                <%= link_to "About", home_about_path,class:"nav-link text-white" %>
               </li>
               <li class="nav-item d-flex align-items-center">
                 <i class="fa-solid fa-user-plus mr-1"></i>
@@ -64,7 +64,7 @@
       <div>
       <%= flash[:notice]%>
       </div>
-      <div class="container mt-4">
+      <div class=" mt-4">
         <%= yield %>
       </div>
     </main>
