@@ -49,42 +49,35 @@
           <%end%>
         </tr>
       </table>
-
-<table>
-  <thead>
-    <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-    </tr>
-  </thead>
-  <tbody>
- <% @book_detail.book_comments.each do |book_comment|%>
-    <tr>
-      <td>
-<%= image_tag book_comment.user.get_profile_image(100,100)%>
-<p>
-
-<%= book_comment.user.name%>
-</p>
-      </td>
-      <td>
- <p><%= book_comment.comment%></p>
-      </td>
-      <td>
-        <% if current_user.id==book_comment.user_id %>
-<%= link_to "Destroy",book_book_comment_path(book_comment.book,book_comment),method: :delete ,class:"btn btn-danger"%>
-        <%end%>
-      </td>
-    </tr>
-    <%end%>
-  </tbody>
-</table>
-    
-     
-    
-     
-      
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @book_detail.book_comments.each do |book_comment|%>
+            <tr>
+              <td>
+                <%= image_tag book_comment.user.get_profile_image(100,100)%>
+                <p>
+                  <%= book_comment.user.name%>
+                </p>
+              </td>
+              <td>
+                <p><%= book_comment.comment%></p>
+              </td>
+              <td>
+                <% if current_user.id==book_comment.user_id %>
+                  <%= link_to "Destroy",book_book_comment_path(book_comment.book,book_comment),method: :delete ,class:"btn btn-danger"%>
+                <%end%>
+              </td>
+            </tr>
+          <%end%>
+        </tbody>
+      </table>
       <%= form_with model: [@book_detail,@book_comment] do |f|%>
         <label for="comment"><%= @book_detail.title%></label>
         <%= f.text_area :comment ,id:"comment",class:"form-control"%>
